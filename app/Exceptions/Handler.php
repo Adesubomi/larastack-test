@@ -36,7 +36,11 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
-        parent::report($exception);
+        if ($this->shouldntReport($exception)) {
+            return;
+        }
+
+        Handler::logAnException($exception);
     }
 
     /**
@@ -51,5 +55,34 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    /**
+     * Logs a simple message to log file
+     * @param String $message
+     */
+    public static function simpleLog(String $message)
+    {
+        try {
+            \Illuminate\Support\Facades\Log::info($message);
+        } catch (\Exception $exception) {
+
+        }
+    }
+
+    /**
+     * Log the information of an exception to log file
+     * @param \Throwable $exception
+     */
+    public static function logAnException(\Throwable $exception)
+    {
+
+        $exceptionFormat = "\n" . config('app.name') . "-EXCEPTION \nMESSAGE:: %s \nFILE:: %s \nLINE::%s \n\n";
+
+        \Illuminate\Support\Facades\Log::info(sprintf($exceptionFormat,
+            !empty(trim($exception->getMessage())) ? $exception->getMessage() : get_class($exception),
+            $exception->getFile(),
+            $exception->getLine()
+        ));
     }
 }

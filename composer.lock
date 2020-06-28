@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6558f74828bca9ebecac73d90cea4b1a",
+    "content-hash": "3d875f540aee1e1709febaad46da1a20",
     "packages": [
+        {
+            "name": "adesubomi/larastack",
+            "version": "0.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Adesubomi/larastack.git",
+                "reference": "eae926c32b32aa61a87d41cbb4199c6ec88c7c45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Adesubomi/larastack/zipball/eae926c32b32aa61a87d41cbb4199c6ec88c7c45",
+                "reference": "eae926c32b32aa61a87d41cbb4199c6ec88c7c45",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Adesubomi\\Larastack\\Provider\\LarastackServiceProvider"
+                    ],
+                    "aliases": {
+                        "Larastack": "Adesubomi\\Larastack\\Facade\\LarastackFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Adesubomi\\Larastack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oniya Daniel",
+                    "email": "daniel.prince84@gmail.com"
+                }
+            ],
+            "description": "A Simple and Efficient Wrapper Around Paystack API for Laravel",
+            "time": "2018-06-14T03:40:39+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "1.3.0",
